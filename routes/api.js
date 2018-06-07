@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Ninja = require('../models/ninjas.js')
+const bodyParser = require('body-parser');
 
 router.get('/ninjas/:id', (req, res) => {
   Ninja.findById({_id: req.params.id}).then((ninjas) => {
@@ -8,7 +9,7 @@ router.get('/ninjas/:id', (req, res) => {
   });
 });
 
-router.get('/ninjas/all', (req, res) => {
+router.get('/ninjas/', (req, res) => {
   Ninja.find({}).then((ninjas) => {
     res.status(202).send(JSON.stringify(ninjas, undefined, 2));
   }).catch((e) => {
@@ -17,6 +18,7 @@ router.get('/ninjas/all', (req, res) => {
 })
 
 router.post('/ninjas', (req, res) => {
+  console.log(req.params);
   Ninja.create(req.body).then((ninja)=> {
     res.send(ninja);
   }).catch((e) => {

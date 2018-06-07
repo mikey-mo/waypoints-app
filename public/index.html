@@ -6,22 +6,30 @@
   <title>Ninjago</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" />﻿ 
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" />
 
 </head>
 <body>
   <h1 class="title">NinjaGo - a REST api</h1>
   <div id="homepage">
-    <h3>Hire a ninja in your area:</h3>
+    <h3>Create a ninja in your area:</h3>
     <div id="ninjas">
-
+        <form method="POST" action="/api/ninjas">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="name">
+            <label for="rank">Rank</label>
+            <input type="text" id="rank" name="rank" placeholder="rank">
+            <label for="available">Available</label>
+            <input type="checkbox" id="available" name="available">
+            <input type="submit" value="Submit">
+        </form>
     </div>
   </div>
   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
   <script src="https://unpkg.com/react@15/dist/react.js"></script>
   <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
 
-  <script type="text/babel">
+  <!-- <script type="text/babel">
     var Ninjas = React.createClass({
         getInitialState: function(){
             return({
@@ -66,6 +74,6 @@
         }
     });
     ReactDOM.render(<Ninjas />, document.getElementById('ninjas'));
-    </script>
+    </script> -->
 </body>
 </html>
