@@ -20,6 +20,9 @@ const userSchema = new Schema({
     type: String,
     required: true,
     unique: [true, 'email must be unique']
+  },
+  routes:{
+    type: Array
   }
 })
 

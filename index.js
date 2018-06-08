@@ -29,6 +29,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api', require('./routes/api'));
 app.use('/auth', require('./routes/auth'));
 app.use('/profile', require('./routes/profile'));
+app.use('waypoint', require('./routes/waypoint'));
 
 // app.engine('mustache', mustacheExpress());
 // app.set('view engine', 'mustache');
@@ -39,8 +40,7 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-  console.log('GET request');
-  res.send({name: 'Yoshi'}); 
+  res.render('index', { user: req.user }); 
 });
 
 app.get('/delete/:id', (req, res) => {

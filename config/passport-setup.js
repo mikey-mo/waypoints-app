@@ -31,7 +31,8 @@ passport.use(
           new User({
             username: email.displayName,
             googleid: email.id,
-            email: email.emails[0].value
+            email: email.emails[0].value,
+            routes: []
           }).save().then((newUser) => {
             console.log(newUser);
             done(null, newUser);

@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Ninja = require('../models/ninjas.js')
+const User = require('../models/users.js')
 const bodyParser = require('body-parser');
 
 // router.get('/ninjas/:id', (req, res) => {
@@ -24,13 +25,29 @@ router.get('/ninjas', (req, res) => {
 })
 
 router.post('/ninjas', (req, res) => {
-  // console.log(req);
-  Ninja.create(req.body).then((ninja)=> {
-    res.send(ninja);
-  // res.redirect('../')
-  }).catch((e) => {
-    res.status(400).send(`Sorry: ${e.message}`);
-  });
+  console.log(req.body);
+  User.findOne({_id: req.user.id}, {}).then((user) => {
+    user.routes.push({
+      name: req.body.name,
+      rank: req.body.rank
+     });
+     user.save();
+    // console.log(user);
+    // user.save();
+  }).then((updatedUser) => {
+    res.send(updatedUser);
+  })
+  // console.log(req.body);
+  // Ninja.create({
+  //   name: req.body.name,
+  //   rank: req.body.rank,
+  //   user_id: req.user.id
+  // }).then((ninja)=> {
+  //   res.send(ninja);
+  // // res.redirect('../')
+  // }).catch((e) => {
+  //   res.status(400).send(`Sorry: ${e.message}`);
+  // });
 });
 
 router.put('/ninjas/:id', (req, res) => {
@@ -53,7 +70,7 @@ router.delete('/ninjas/:id', (req, res) => {
 router.get('/ninjas/delete/:id', (req, res) => {
   // res.send('<h1>This is a DELETE</h1>')
   Ninja.findByIdAndRemove({_id: req.params.id}).then(() => {
-    res.redirect('/'); 
+    res.redirect('index'); 
   });
 });
 

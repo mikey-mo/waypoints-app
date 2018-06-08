@@ -10,23 +10,15 @@
 
 </head>
 <body>
-<div>
-  </div>
-  <h1 class="title">NinjaGo - a REST api</h1>
+  <h1 class="title">NinjaGo</h1>
   <div id="homepage">
-    <h3>Edit Ninja:</h3>
-    <div id="current-ninja">
-      <h4>Name: <%= ninja.name %></h4>
-      <h4>Rank: <%= ninja.rank %></h4>
-      <h4>User: <%= ninja.user_id %></h4>
-    </div>
+    <h3>Create a ninja in your area:</h3>
     <div id="ninjas">
-        <form action="/edit/<%=ninja.id%>" method="POST">
-            Name: <input type="text" name="name" value=<%=ninja.name%>><br>
-            Rank: <input type="text" name="rank" value=<%=ninja.rank%>><br>
+        <form action="/api/ninjas" method="POST">
+            Name: <input type="text" name="name" value="name"><br>
+            Rank: <input type="text" name="rank" value="rank"><br>
             <input type="submit" value="Submit">
         </form>
-        <a href="/delete/<%=ninja.id%>"><button>Hi</button></a>
     </div>
   </div>
   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
