@@ -20,7 +20,7 @@
       <h4>Rank: <%= ninja.rank %></h4>
     </div>
     <div id="ninjas">
-        <form action="/ninjas/:id" method="POST">
+        <form action="/edit/<%=ninja.id%>" method="POST">
             Name: <input type="text" name="name" value=<%=ninja.name%>><br>
             Rank: <input type="text" name="rank" value=<%=ninja.rank%>><br>
             <input type="submit" value="Submit">
@@ -31,8 +31,5 @@
   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
   <script src="https://unpkg.com/react@15/dist/react.js"></script>
   <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
-
-  <script>
-  </script>
 </body>
 </html>
