@@ -20,7 +20,8 @@ const geoSchema = new Schema({
 const ninjaSchema = new Schema({
   name:{
     type: String,
-    required: [true, 'Name Field is Required']
+    required: [true, 'Name Field is Required'],
+    unique: true
   },
   rank:{
     type: String,
