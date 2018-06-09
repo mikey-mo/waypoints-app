@@ -10,8 +10,9 @@ const passportSetup = require('./config/passport-setup');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const keys = require('./config/keys');
+const dateFormat = require('dateformat');
 
-mongoose.connect('mongodb://localhost/ninjago')
+mongoose.connect('mongodb://localhost/waypoints')
 mongoose.Promise = global.Promise;
 
 const app = express();
@@ -29,7 +30,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api', require('./routes/api'));
 app.use('/auth', require('./routes/auth'));
 app.use('/profile', require('./routes/profile'));
-app.use('waypoint', require('./routes/waypoint'));
+app.use('/waypoints', require('./routes/waypoints'));
 
 // app.engine('mustache', mustacheExpress());
 // app.set('view engine', 'mustache');
@@ -40,7 +41,7 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-  res.render('index', { user: req.user }); 
+  res.render('index', { user: req.user, dateFormat }); 
 });
 
 app.get('/delete/:id', (req, res) => {

@@ -4,6 +4,14 @@ body{
   background: #ff5252;
   margin: 10px 30px;
 }
+#map {
+  height: 30vw;
+  padding: 0;
+  margin: 0;
+  grid-column: 2;
+  border: 2px #ff5252 solid;
+  text-align: center;
+}
 #homepage{
   max-width: 800px;
   margin: 60px auto;
@@ -14,6 +22,8 @@ body{
 }
 h4 {
   margin-left: 20px;}
+h3 {
+  display: inline;}
 #login-button{
   color: white;
   margin-left: 20px;
@@ -25,7 +35,15 @@ h4 {
   box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
 }
 input[type="text"]{
-  display: block;
+  display: inline;
+  width: 300px;
+  margin: 20px 0;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+input[type="time"]{
+  display: inline;
   width: 300px;
   margin: 20px 0;
   padding: 10px;

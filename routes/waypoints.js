@@ -9,8 +9,8 @@ const authCheck = (req, res, next) => {
   }
 };
 
-router.get('/waypoint/:id', authCheck, (req, res) => {
-  res.render('waypoint', { user: req.user });
+router.get('/', authCheck, (req, res) => {
+  res.render('waypoints', { user: req.user });
 });
 
 module.exports = router;

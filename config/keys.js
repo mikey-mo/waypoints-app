@@ -5,5 +5,8 @@ module.exports = ({
   },
   session: {
     cookieKey: "woohoo"
+  },
+  gmaps: {
+    apiKey: "AIzaSyBpsmQEFJ1UAww2q0_sJd9qIV3vEzTneqs"
   }
 })

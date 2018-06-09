@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Ninjago</title>
+  <title>Waypoints</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="/styles.css" />
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" />
@@ -12,18 +12,18 @@
 <body>
 <div>
   </div>
-  <h1 class="title">NinjaGo</h1>
+  <h1 class="title">Waypoints</h1>
   <div id="homepage">
-    <h3>Edit User:</h3>
+    <h3>User Information:</h3>
     <div id="ninja">
       <h4>Username: <%= user.username %></h4>
       <h4>Email: <%= user.email %></h4>
     </div>
     <h3>User Routes:</h3>
-    <div id="ninja">
-      <% user.routes.forEach(route => {%>
-      <h4>Waypoint:</h4>
-      <p><%= route.name %> | <%= route.rank %></p>
+    <div id="ninja"></div>
+      <% user.routes.waypoints.forEach(route => {%>
+      <h4>Waypoint Group:</h4>
+      <p><%= route.name %> | <%= route.lat %> | <%= route.lng %> | <%= route.time %></p>
       <% }) %>
     </div>
   </div>

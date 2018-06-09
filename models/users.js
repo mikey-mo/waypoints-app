@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const ObjectId = mongoose.Types.ObjectId();
 
 //create ninja schema
 
@@ -12,17 +13,18 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-  available:{
-    type: Boolean,
-    default: true
-  },
   email:{
     type: String,
     required: true,
-    unique: [true, 'email must be unique']
+    unique: [true, 'Email must be unique']
   },
   routes:{
-    type: Array
+      _id: {
+        type: Schema.Types.ObjectId
+      },
+      waypoints: {
+        type: Array
+    }
   }
 })
 

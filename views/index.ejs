@@ -3,26 +3,25 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Ninjago</title>
+  <title>Waypoints</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="/styles.css" />
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" />
-
+  <script type="text/javascript" src="/main.js"></script>
 </head>
 <body>
-  <h1 class="title">NinjaGo</h1>
+  <h1 class="title">Waypoints</h1>
   <div id="homepage">
-    <h3>Create a ninja in your area:</h3>
+    <h3>Create a waypoint in your area:</h3>
     <div id="ninjas">
         <form action="/api/ninjas" method="POST">
-            Name: <input type="text" name="name" value="name"><br>
-            Rank: <input type="text" name="rank" value="rank"><br>
+            Name: <input type="text" name="name" value="Name">
+            Location: <input type="text" name="address" value="Address">
+            Time: <input type="time" name="time" value="12:00:00"><br />
             <input type="submit" value="Submit">
         </form>
     </div>
   </div>
-  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-  <script src="https://unpkg.com/react@15/dist/react.js"></script>
-  <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpsmQEFJ1UAww2q0_sJd9qIV3vEzTneqs&callback=initMap"></script>
 </body>
 </html>
