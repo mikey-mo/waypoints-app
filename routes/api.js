@@ -37,12 +37,12 @@ router.post('/ninjas', (req, res) => {
       var name = req.body.name
       var lat = response.data.results[0].geometry.location.lat;
       var lng = response.data.results[0].geometry.location.lng;
-      var object = {_id: Math.floor(Math.random() * 100000), waypoints: [{name, lat, lng, time: req.body.time}] };
+      var object = { waypoints: [{ name, location: {lat, lng}, time: req.body.time}] };
       User.findOne({ _id: req.user.id }, {}).then((user) => {
         user.routes.push(object);
         user.save();
     }).then(() => {
-      res.status(200).redirect('./../profile')
+      res.status(200).redirect('./../waypoints')
     }).catch((e) => {
       if (e.code === 'ENOTFOUND') {
         console.log('Unable to connect to API servers.');

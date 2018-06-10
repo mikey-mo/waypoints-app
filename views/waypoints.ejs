@@ -24,20 +24,21 @@
     </div>
     <h3>User Routes:</h3>
     <div id="ninja">
-      <% arrayHolder = [] %>
-      <% user.routes.forEach(route => {%>
+      <% wypts = [] %>
       <h4>Waypoint Group:</h4>
-      <p><%= route.id %></p>
-          <%route.waypoints.forEach( waypoint => { %>
-          <p>Name: <%=waypoint.name%></p>
-          <p>Lat: <%=waypoint.lat%></p>
-          <p>Lng: <%=waypoint.lng%></p>
-          <p>Time: <%=waypoint.time%></p>
-          <% arrayHolder.push(waypoint.lat) %>
-          <% arrayHolder.push(waypoint.lng) %>
+          <% user.routes[2].waypoints.forEach( (waypoint, index) => { %>
+          <span id="waypoint-info"><%=(index+10).toString(36)%></span>
+          <span id="waypoint-info">Time: <%=waypoint.time%></span>
+          <span id="waypoint-info">Name: <%=waypoint.name%></span>
+          <% if (user.routes[0].waypoints.indexOf(waypoint) !== 0) { %>
+            <span class="waypoint-button">^</span>
+          <% } %>
+            <span class="waypoint-button">v</span>
+          <span class="waypoint-button">x</span><br />
+          <% wypts.push({location: waypoint.location, stopover: true}); %>
           <% }) %>
-          <% }) %>
-        <%= arrayHolder %>
+        <% slicedWypts = wypts.slice(1, -1) %>
+        <%= slicedWypts %>
     </div>
   </div>
   <script>
@@ -45,8 +46,8 @@
         var directionsService = new google.maps.DirectionsService;
         var directionsDisplay = new google.maps.DirectionsRenderer;
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 7,
-          center: {lat: 41.85, lng: -87.65}
+          zoom: 20,
+          center: {lat: <%=user.routes[0].waypoints[0].lat%>, lng: <%=user.routes[0].waypoints[0].lng%>}
         });
         directionsDisplay.setMap(map);
 
@@ -54,9 +55,12 @@
       }
 
       function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        id = <%=id%>
         directionsService.route({
-          origin: {lat: 41.85, lng: -87.65},
-          destination: {lat: 41.85, lng: -88.65},
+          origin: {lat: <%=user.routes[id].waypoints[0].location.lat%>, lng: <%=user.routes[id].waypoints[0].location.lng%>},
+          destination: {lat: <%=user.routes[id].waypoints[user.routes[id].waypoints.length -1].location.lat%>, lng: <%=user.routes[id].waypoints[user.routes[id].waypoints.length -1].location.lng%>},
+          waypoints: [{location: { lat : 40.6701828, lng: -73.945052}, stopover: true}],
+          optimizeWaypoints: true,
           travelMode: 'DRIVING'
         }, function(response, status) {
           if (status === 'OK') {

@@ -15,4 +15,8 @@ router.get('/', authCheck, (req, res) => {
   res.render('waypoints', { user: req.user });
 });
 
+router.get('/:id', authCheck, (req, res) => {
+    res.render('waypoints', { user: req.user, id: req.params.id });
+  });
+
 module.exports = router;
