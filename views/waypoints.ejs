@@ -26,7 +26,7 @@
     <div id="ninja">
       <% wypts = [] %>
       <h4>Waypoint Group:</h4>
-          <% user.routes[2].waypoints.forEach( (waypoint, index) => { %>
+          <% user.routes[id].waypoints.forEach((waypoint, index) => { %>
           <span id="waypoint-info"><%=(index+10).toString(36)%></span>
           <span id="waypoint-info">Time: <%=waypoint.time%></span>
           <span id="waypoint-info">Name: <%=waypoint.name%></span>
@@ -47,7 +47,7 @@
         var directionsDisplay = new google.maps.DirectionsRenderer;
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 20,
-          center: {lat: <%=user.routes[0].waypoints[0].lat%>, lng: <%=user.routes[0].waypoints[0].lng%>}
+          center: {lat: <%=user.routes[id].waypoints[0].location.lat%>, lng: <%=user.routes[id].waypoints[0].location.lng%>}
         });
         directionsDisplay.setMap(map);
 
@@ -56,6 +56,7 @@
 
       function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         id = <%=id%>
+        console.log(id);
         directionsService.route({
           origin: {lat: <%=user.routes[id].waypoints[0].location.lat%>, lng: <%=user.routes[id].waypoints[0].location.lng%>},
           destination: {lat: <%=user.routes[id].waypoints[user.routes[id].waypoints.length -1].location.lat%>, lng: <%=user.routes[id].waypoints[user.routes[id].waypoints.length -1].location.lng%>},
