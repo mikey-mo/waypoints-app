@@ -32,10 +32,10 @@
           <% } %>
             <span class="waypoint-button">v</span>
           <span class="waypoint-button">x</span><br />
-          <% wypts.push({location: waypoint.location, stopover: true}); %>
+          <% wypts.push({location: waypoint.locationString, stopover: true}); %>
           <% }) %>
         <% slicedWypts = wypts.slice(1, -1) %>
-        <%= slicedWypts %>
+        <%= slicedWypts[0].location %>
     </div>
   </div>
   <script>
@@ -53,11 +53,16 @@
 
       function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         id = <%=id%>
-
+        <% wypts = [] %>
+          <% user.routes[id].waypoints.forEach((waypoint, index) => { %>
+          <% wypts.push({location: waypoint.locationString, stopover: true}); %>
+          <% }) %>
+        <% slicedWypts = wypts.slice(1, -1) %>
+          sW = <%- JSON.stringify(slicedWypts) %>
         directionsService.route({
           origin: {lat: <%=user.routes[id].waypoints[0].location.lat%>, lng: <%=user.routes[id].waypoints[0].location.lng%>},
           destination: {lat: <%=user.routes[id].waypoints[user.routes[id].waypoints.length -1].location.lat%>, lng: <%=user.routes[id].waypoints[user.routes[id].waypoints.length -1].location.lng%>},
-          waypoints: [{location: '40.6701828, -73.945052', stopover: true}],
+          waypoints: sW,
           optimizeWaypoints: true,
           travelMode: 'DRIVING'
         }, function(response, status) {
