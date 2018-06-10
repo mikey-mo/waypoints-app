@@ -40,12 +40,33 @@
         <%= arrayHolder %>
     </div>
   </div>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpsmQEFJ1UAww2q0_sJd9qIV3vEzTneqs&callback=initMap"></script>
   <script>
-    var map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: <%=arrayHolder[0]%>, lng: <%=arrayHolder[1]%>},
-        zoom: 15
-      });
+    function initMap() {
+      var directionsService = new google.maps.DirectionsService;
+      var directionsDisplay = new google.maps.DirectionsRenderer;
+      var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: <%=arrayHolder[0]%>, lng: <%=arrayHolder[1]%>},
+          zoom: 15
+        });
+      directionsDisplay.setMap(map);
+
+      function directions() {
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+        }
+
+      var marker = new google.maps.Marker({
+        position: {lat: <%=arrayHolder[0]%>, lng: <%=arrayHolder[1]%>},
+        map: map,
+        title: 'Starting Point'
+      })
+
+      var markerTwo = new google.maps.Marker({
+        position: {lat: <%=arrayHolder[2]%>, lng: <%=arrayHolder[3]%>},
+        map: map,
+        title: 'Ending Point'
+      })
+    }
   </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpsmQEFJ1UAww2q0_sJd9qIV3vEzTneqs&callback=initMap"></script>
 </body>
 </html>
