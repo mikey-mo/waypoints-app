@@ -21,7 +21,7 @@
     </div>
     <h3>User Routes:</h3>
     <div id="ninja"></div>
-      <% user.routes.waypoints.forEach(route => {%>
+      <% user.routes.forEach(route => {%>
       <h4>Waypoint Group:</h4>
       <p><%= route.name %> | <%= route.lat %> | <%= route.lng %> | <%= route.time %></p>
       <% }) %>

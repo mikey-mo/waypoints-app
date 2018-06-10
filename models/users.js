@@ -18,13 +18,8 @@ const userSchema = new Schema({
     required: true,
     unique: [true, 'Email must be unique']
   },
-  routes:{
-      _id: {
-        type: Schema.Types.ObjectId
-      },
-      waypoints: {
-        type: Array
-    }
+  routes: {
+    type: Array
   }
 })
 

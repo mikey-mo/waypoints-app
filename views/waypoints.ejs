@@ -24,18 +24,27 @@
     </div>
     <h3>User Routes:</h3>
     <div id="ninja">
-      <% user.routes.waypoints.forEach(route => {%>
+      <% arrayHolder = [] %>
+      <% user.routes.forEach(route => {%>
       <h4>Waypoint Group:</h4>
-      <p><%= route.name %></p>
-      <% }) %>
+      <p><%= route.id %></p>
+          <%route.waypoints.forEach( waypoint => { %>
+          <p>Name: <%=waypoint.name%></p>
+          <p>Lat: <%=waypoint.lat%></p>
+          <p>Lng: <%=waypoint.lng%></p>
+          <p>Time: <%=waypoint.time%></p>
+          <% arrayHolder.push(waypoint.lat) %>
+          <% arrayHolder.push(waypoint.lng) %>
+          <% }) %>
+          <% }) %>
+        <%= arrayHolder %>
     </div>
   </div>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpsmQEFJ1UAww2q0_sJd9qIV3vEzTneqs&callback=initMap"></script>
   <script>
     var map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 13,
-        title: "<%=user.routes.waypoints.name%>"
+        center: {lat: <%=arrayHolder[0]%>, lng: <%=arrayHolder[1]%>},
+        zoom: 15
       });
   </script>
 </body>

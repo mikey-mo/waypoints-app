@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
 const methodOverride = require('method-override');
-const Ninja = require('./models/ninjas.js')
 const bcrypt = require('bcrypt');
 const passportSetup = require('./config/passport-setup');
 const cookieSession = require('cookie-session');

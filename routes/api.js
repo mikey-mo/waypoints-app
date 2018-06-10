@@ -1,10 +1,11 @@
 const express = require('express')
-const mongoose = require('mongoose');
 const router = express.Router()
 const Ninja = require('../models/ninjas.js')
 const User = require('../models/users.js')
 const bodyParser = require('body-parser');
 const axios = require('axios');
+const mongoose = require('mongoose');
+const ObjectId = mongoose.Types.ObjectId();
 
 // router.get('/ninjas/:id', (req, res) => {
 //   Ninja.findById({_id: req.params.id}).then((ninja) => {
@@ -31,18 +32,14 @@ router.post('/ninjas', (req, res) => {
     var geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=AIzaSyBpsmQEFJ1UAww2q0_sJd9qIV3vEzTneqs`;
     axios.get(geocodeUrl).then((response) => {
       if (response.data.status === 'ZERO_RESULTS') {
-        return new Error('Unable to find address.');
+        throw new Error('Unable to find address.');
       }
       var name = req.body.name
       var lat = response.data.results[0].geometry.location.lat;
       var lng = response.data.results[0].geometry.location.lng;
+      var object = {_id: Math.floor(Math.random() * 100000), waypoints: [{name, lat, lng, time: req.body.time}] };
       User.findOne({ _id: req.user.id }, {}).then((user) => {
-        user.routes.waypoints.push({
-          name,
-          lat,
-          lng,
-          time: req.body.time
-        });
+        user.routes.push(object);
         user.save();
     }).then(() => {
       res.status(200).redirect('./../profile')
