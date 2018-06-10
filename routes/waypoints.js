@@ -34,7 +34,7 @@ router.post('/', (req, res) => {
         var name = req.body.name
         var lat = response.data.results[0].geometry.location.lat;
         var lng = response.data.results[0].geometry.location.lng;
-        var object = { waypoints: [{ name, location: {lat, lng}, time: req.body.time}] };
+        var object = { waypoints: [{ name, location: {lat, lng}, locationString: lat + ', ' + lng, stopover: true, time: req.body.time}] };
         User.findOne({ _id: req.user.id }, {}).then((user) => {
         user.routes.push(object);
         user.save();

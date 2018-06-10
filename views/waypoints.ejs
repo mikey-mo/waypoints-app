@@ -17,12 +17,9 @@
     <div id="map">
     </div>
     <br />
-    <h3>User Information:</h3>
     <div id="ninja">
       <h4>Username: <%= user.username %></h4>
-      <h4>Email: <%= user.email %></h4>
     </div>
-    <h3>User Routes:</h3>
     <div id="ninja">
       <% wypts = [] %>
       <h4>Waypoint Group:</h4>
@@ -56,11 +53,11 @@
 
       function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         id = <%=id%>
-        console.log(id);
+
         directionsService.route({
           origin: {lat: <%=user.routes[id].waypoints[0].location.lat%>, lng: <%=user.routes[id].waypoints[0].location.lng%>},
           destination: {lat: <%=user.routes[id].waypoints[user.routes[id].waypoints.length -1].location.lat%>, lng: <%=user.routes[id].waypoints[user.routes[id].waypoints.length -1].location.lng%>},
-          waypoints: [{location: { lat : 40.6701828, lng: -73.945052}, stopover: true}],
+          waypoints: [{location: '40.6701828, -73.945052', stopover: true}],
           optimizeWaypoints: true,
           travelMode: 'DRIVING'
         }, function(response, status) {
