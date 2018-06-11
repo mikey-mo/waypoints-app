@@ -9,7 +9,7 @@ router.get('/login', (req, res) => {
 router.get('/google', passport.authenticate('google', {
   scope: ['email']
 }), (req, res) => {
-  res.redirect('../public/index.html')
+  res.redirect('/')
 });
 
 router.get('/logout', (req, res) => {
@@ -18,7 +18,7 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-  res.redirect('/profile');
+  res.redirect('/');
 });
 
 module.exports = router;

@@ -21,7 +21,35 @@ router.get('/', authCheck, (req, res) => {
 });
 
 router.get('/:id', authCheck, (req, res) => {
+    if (req.user.routes[0] === undefined) {
+    res.render('index')    
+    } else {
     res.render('waypoints', { user: req.user, id: req.params.id });
+    }
+  });
+
+router.post('delete-route', authCheck, (req, res) => {
+
+})
+
+router.post('/add', authCheck, (req, res) => {
+    backURL = req.header('Referer') || '/';
+    var encodedAddress = encodeURIComponent(req.body.address);
+    var geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=AIzaSyBpsmQEFJ1UAww2q0_sJd9qIV3vEzTneqs`;
+    axios.get(geocodeUrl).then((response) => {
+        if (response.data.status === 'ZERO_RESULTS') {
+            throw new Error('Unable to find address.');
+            }
+        var name = req.body.name
+        var lat = response.data.results[0].geometry.location.lat;
+        var lng = response.data.results[0].geometry.location.lng;
+        var object = { name, location: {lat, lng}, locationString: lat + ', ' + lng, stopover: true, time: req.body.time};
+        User.findOneAndUpdate({ _id: req.user.id }, { $push: { [`routes.${req.body.id}.waypoints`]: object}}).then((user) => {
+        }).catch((e) => {
+            console.log(e);
+        });
+    });
+    res.redirect([`${req.body.id}`])
   });
 
 router.post('/', (req, res) => {
@@ -39,7 +67,7 @@ router.post('/', (req, res) => {
         user.routes.push(object);
         user.save();
     }).then(() => {
-        res.status(200).redirect('./../waypoints')
+        res.status(200).redirect('./../waypoints/0')
     }).catch((e) => {
         if (e.code === 'ENOTFOUND') {
         console.log('Unable to connect to API servers.');

@@ -4,6 +4,10 @@ const ObjectId = mongoose.Types.ObjectId();
 
 //create ninja schema
 
+const waypointSchema = new Schema({
+  type: Array
+})
+
 const userSchema = new Schema({
   username:{
     type: String,
@@ -18,8 +22,9 @@ const userSchema = new Schema({
     required: true,
     unique: [true, 'Email must be unique']
   },
-  routes: {
-    type: Array
+  routes:{
+    type: Array,
+    waypoints: [waypointSchema]
   }
 })
 

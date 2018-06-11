@@ -21,13 +21,23 @@
       <h4>Username: <%= user.username %></h4>
     </div>
     <div id="ninja">
+      <% if (user.routes[id].waypoints.length < 2) { %>
+      <h4>Add your next stop</h4>
+        <form action="/waypoints/add" method="POST">
+            Name: <h6><i>Ex: Home, Hotel, Etc.</i></h6><input type="text" name="name">
+            Location: <h6><i>Ex: Ex: 1090 Bedford Ave, Brooklyn NY, Grand Central Terminal, etc.</i></h6><input type="text" name="address">
+            Time: <input type="time" name="time" value="12:00:00"><br />
+                  <input type="hidden" name="id" value=<%=id%>>
+            <input type="submit" value="Submit">
+        </form>
+      <% } else  { %>
       <% wypts = [] %>
       <h4>Waypoint Group:</h4>
           <% user.routes[id].waypoints.forEach((waypoint, index) => { %>
           <span id="waypoint-info"><%=(index+10).toString(36)%></span>
           <span id="waypoint-info">Time: <%=waypoint.time%></span>
           <span id="waypoint-info">Name: <%=waypoint.name%></span>
-          <% if (user.routes[0].waypoints.indexOf(waypoint) !== 0) { %>
+          <% if (user.routes[id].waypoints.indexOf(waypoint) !== 0) { %>
             <span class="waypoint-button">^</span>
           <% } %>
             <span class="waypoint-button">v</span>
@@ -36,6 +46,15 @@
           <% }) %>
         <% slicedWypts = wypts.slice(1, -1) %>
         <%= slicedWypts[0].location %>
+        <h4>Add Location:</h4>
+        <form action="/waypoints/add" method="POST">
+            Name: <h6><i>Ex: Home, Hotel, Etc.</i></h6><input type="text" name="name">
+            Location: <h6><i>Ex: Ex: 1090 Bedford Ave, Brooklyn NY, Grand Central Terminal, etc.</i></h6><input type="text" name="address">
+            Time: <input type="time" name="time" value="12:00:00"><br />
+                  <input type="hidden" name="id" value=<%=id%>>
+            <input type="submit" value="Submit">
+        </form>
+      <% } %>
     </div>
   </div>
   <script>
@@ -64,7 +83,7 @@
           destination: {lat: <%=user.routes[id].waypoints[user.routes[id].waypoints.length -1].location.lat%>, lng: <%=user.routes[id].waypoints[user.routes[id].waypoints.length -1].location.lng%>},
           waypoints: sW,
           optimizeWaypoints: true,
-          travelMode: 'DRIVING'
+          travelMode: 'BICYCLING'
         }, function(response, status) {
           if (status === 'OK') {
             directionsDisplay.setDirections(response);
@@ -73,6 +92,7 @@
           }
         });
       }
+
     </script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpsmQEFJ1UAww2q0_sJd9qIV3vEzTneqs&callback=initMap"></script>
 </body>
