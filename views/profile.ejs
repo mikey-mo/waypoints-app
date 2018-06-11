@@ -12,7 +12,7 @@
 <body>
 <div>
   </div>
-  <h1 class="title">Waypoints</h1>
+  <h1 class="title">Waypoints =></h1>
   <div id="homepage">
     <h3>User Information:</h3>
     <div id="ninja">
@@ -20,9 +20,11 @@
     </div>
     <h3>Saved Routes:</h3>
     <div id="ninja"></div>
-      <% user.routes.forEach(route => {%>
-      <h4>Waypoint Group:</h4>
-      <p><%= route.name %> | <%= route.lat %> | <%= route.lng %> | <%= route.time %></p>
+      <% user.routes.forEach((route, index) => {%>
+      <a href="./../waypoints/<%=index%>"><h4 style="display: inline">Waypoint Group <%=index + 1%>:</h4></a>
+      <% route.waypoints.forEach((waypoint, index) => { %>
+      <p style="display: inline;"><%=waypoint.name%> | </p>
+      <% }) %>
       <% }) %>
     </div>
   </div>

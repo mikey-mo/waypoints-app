@@ -38,7 +38,21 @@
           <span id="waypoint-info">Time: <%=waypoint.time%></span>
           <span id="waypoint-info">Name: <%=waypoint.name%></span>
           <% if (user.routes[id].waypoints.indexOf(waypoint) !== 0) { %>
-            <span class="waypoint-button">^</span>
+          <form action="/waypoints/moveup/waypoint" method="POST">
+              <input type="hidden" name="id" value=<%=id%>>
+              <input type="hidden" name="posId" value=<%=waypoint.pos_id%>>
+              <input type="hidden" name="index" value=<%=index%>>
+              <input type="submit" value="Move Up">
+          </form>
+          <% } %>
+          <% last = user.routes[id].waypoints.length %>
+          <% if (user.routes[id].waypoints.lastIndexOf(waypoint) !== last -1) {%>
+            <form action="/waypoints/movedown/waypoint" method="POST">
+                <input type="hidden" name="id" value=<%=id%>>
+                <input type="hidden" name="index" value=<%=index%>>
+                <input type="hidden" name="posId" value=<%=waypoint.pos_id%>>
+                <input type="submit" value="Move Down">
+            </form>
           <% } %>
             <form action="/waypoints/delete/waypoint" method="POST">
                 <input type="hidden" name="id" value=<%=id%>>
