@@ -57,7 +57,7 @@ router.post('/moveup/waypoint', authCheck, (req, res) => {
         array = user.routes
         // console.log(array);
         element = array[req.body.id].waypoints.splice(req.body.index, 1);
-        array[req.body.id].waypoints.splice((req.body.index + 1), 0, element[0]);
+        array[req.body.id].waypoints.splice((req.body.index - 1), 0, element[0]);
         // console.log(array)
         return array
     }).then((array) => {
