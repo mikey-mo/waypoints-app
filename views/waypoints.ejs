@@ -40,8 +40,11 @@
           <% if (user.routes[id].waypoints.indexOf(waypoint) !== 0) { %>
             <span class="waypoint-button">^</span>
           <% } %>
-            <span class="waypoint-button">v</span>
-          <span class="waypoint-button">x</span><br />
+            <form action="/waypoints/delete/waypoint" method="POST">
+                <input type="hidden" name="id" value=<%=id%>>
+                <input type="hidden" name="posId" value=<%=waypoint.pos_id%>>
+                <input type="submit" value="Delete">
+            </form>
           <% wypts.push({location: waypoint.locationString, stopover: true}); %>
           <% }) %>
         <% slicedWypts = wypts.slice(1, -1) %>

@@ -28,8 +28,12 @@ router.get('/:id', authCheck, (req, res) => {
     }
   });
 
-router.post('delete-route', authCheck, (req, res) => {
-
+  router.post('/delete/waypoint', authCheck, (req, res) => {
+    int = parseInt(req.body.posId);
+    User.findByIdAndUpdate({_id: req.user.id}, { $pull: { [`routes.${req.body.id}.waypoints`]: { pos_id: int }}}, { new: true}).then((user) => {
+        console.log(user.routes[req.body.id].waypoints[0]);
+        res.redirect([`./../${req.body.id}`]);
+    })
 })
 
 router.post('/add', authCheck, (req, res) => {
@@ -40,10 +44,12 @@ router.post('/add', authCheck, (req, res) => {
         if (response.data.status === 'ZERO_RESULTS') {
             throw new Error('Unable to find address.');
             }
+        posId = Math.random() * 10000;
+        floorId = Math.round(posId);
         var name = req.body.name
         var lat = response.data.results[0].geometry.location.lat;
         var lng = response.data.results[0].geometry.location.lng;
-        var object = { name, location: {lat, lng}, locationString: lat + ', ' + lng, stopover: true, time: req.body.time};
+        var object = { name, pos_id: floorId, location: {lat, lng}, locationString: lat + ', ' + lng, stopover: true, time: req.body.time};
         User.findOneAndUpdate({ _id: req.user.id }, { $push: { [`routes.${req.body.id}.waypoints`]: object}}).then((user) => {
         }).catch((e) => {
             console.log(e);
@@ -59,10 +65,12 @@ router.post('/', (req, res) => {
         if (response.data.status === 'ZERO_RESULTS') {
         throw new Error('Unable to find address.');
         }
+        posId = Math.random() * 10000;
+        floorId = Math.round(posId);
         var name = req.body.name
         var lat = response.data.results[0].geometry.location.lat;
         var lng = response.data.results[0].geometry.location.lng;
-        var object = { waypoints: [{ name, location: {lat, lng}, locationString: lat + ', ' + lng, stopover: true, time: req.body.time}] };
+        var object = { waypoints: [{ name, pos_id: floorId, location: {lat, lng}, locationString: lat + ', ' + lng, stopover: true, time: req.body.time}] };
         User.findOne({ _id: req.user.id }, {}).then((user) => {
         user.routes.push(object);
         user.save();
