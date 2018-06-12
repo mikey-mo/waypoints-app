@@ -10,6 +10,7 @@
   <script type="text/javascript" src="/main.js"></script>
 </head>
 <body>
+<% length = user.routes.length %>
   <h1 class="title">Waypoints</h1>
   <div id="homepage">
     <h3>Start by creating your first waypoint:</h3>
@@ -17,12 +18,48 @@
     <div id="ninjas">
         <form action="/waypoints" method="POST">
             Name: <h6><i>Ex: Home, Hotel, Etc.</i></h6><input type="text" name="name">
-            Location: <h6><i>Ex: Ex: 1090 Bedford Ave, Brooklyn NY, Grand Central Terminal, etc.</i></h6><input type="text" name="address">
-            Time: <input type="time" name="time" value="12:00:00"><br />
+            Location: <h6><i>Ex: 1090 Bedford Ave, Brooklyn NY, Grand Central Terminal, etc.</i></h6><input type="text" name="address">
+            <input type="hidden" name="length" value=<%=length%>>
             <input type="submit" value="Submit">
+        </form>
+        <h4><span id="out"></span></h4>
+        <% length = user.routes.length %>
+        <form action="/waypoints/current" method="POST">
+          <input id="latForm" type="hidden" name="lat" value=''>
+          <input id="lngForm" type="hidden" name="lng" value=''>
+          <input type="hidden" name="name" value="Starting Location">
+          <input type="hidden" name="length" value=<%=length%>>
+          <input id="location" name="location" type="hidden" value=''>
+          <input type="submit" value="Submit">
         </form>
     </div>
   </div>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpsmQEFJ1UAww2q0_sJd9qIV3vEzTneqs&callback=initMap"></script>
+  <script>
+  function geoFindMe() {
+    var output = document.getElementById("location");
+    var lat = document.getElementById("latForm");
+    var lng = document.getElementById("lngForm");
+
+    if (!navigator.geolocation){
+      output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+      return;
+    }
+
+    function success(position) {
+      var latitude  = position.coords.latitude;
+      var longitude = position.coords.longitude;
+        output.value = `${latitude} ${longitude}`;
+        lat.value = `${latitude}`;
+        lng.value = `${longitude}`;
+    }
+     function error() {
+      output.value = "no";
+    }
+    navigator.geolocation.getCurrentPosition(success, error);
+  }
+
+  geoFindMe();
+  </script>
 </body>
 </html>

@@ -15,18 +15,13 @@ const authCheck = (req, res, next) => {
       next();
   }
 };
-
-router.get('/', authCheck, (req, res) => {
-  res.render('waypoints', { user: req.user });
-});
-
 router.get('/:id', authCheck, (req, res) => {
     if (req.user.routes[0] === undefined) {
     res.render('index')    
     } else {
     res.render('waypoints', { user: req.user, id: req.params.id });
     }
-  });
+});
 
   router.post('/delete/waypoint', authCheck, (req, res) => {
     int = parseInt(req.body.posId);
@@ -89,6 +84,29 @@ router.post('/add', authCheck, (req, res) => {
     });
   });
 
+router.post('/current', (req, res) => {
+    console.log(req.body);
+    var posId = Math.random() * 10000;
+    var floorId = Math.round(posId);
+    var name = req.body.name
+    var lat = req.body.lat;
+    var lng = req.body.lng;
+    var object = { waypoints: [{ name, pos_id: floorId, location: {lat, lng}, locationString: lat + ', ' + lng, stopover: true, time: req.body.time}] };
+    User.findOne({ _id: req.user.id }, {}).then((user) => {
+        user.routes.push(object);
+        user.save();
+    
+    }).then(() => {
+        res.status(200).redirect(`./../waypoints/${req.body.length}`)
+    }).catch((e) => {
+        if (e.code === 'ENOTFOUND') {
+        console.log('Unable to connect to API servers.');
+        } else {
+        console.log('There was an error, ', e.message);
+        }
+    });
+});
+
 router.post('/', (req, res) => {
     var encodedAddress = encodeURIComponent(req.body.address);
     var geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=AIzaSyBpsmQEFJ1UAww2q0_sJd9qIV3vEzTneqs`;
@@ -106,7 +124,7 @@ router.post('/', (req, res) => {
         user.routes.push(object);
         user.save();
     }).then(() => {
-        res.status(200).redirect('./../waypoints/0')
+        res.status(200).redirect(`./../waypoints/${req.body.length}`)
     }).catch((e) => {
         if (e.code === 'ENOTFOUND') {
         console.log('Unable to connect to API servers.');
@@ -115,6 +133,6 @@ router.post('/', (req, res) => {
         }
     })
     })
-    });
+ });
 
     module.exports = router;

@@ -31,35 +31,21 @@ app.use('/auth', require('./routes/auth'));
 app.use('/profile', require('./routes/profile'));
 app.use('/waypoints', require('./routes/waypoints'));
 
-// app.engine('mustache', mustacheExpress());
-// app.set('view engine', 'mustache');
+const authCheck = (req, res, next) => {
+  if(!req.user){
+      res.redirect('/auth/login');
+  } else {
+      next();
+  }
+};
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(express.static('public'));
 
-app.get('/', (req, res) => {
+app.get('/', authCheck, (req, res) => {
   res.render('index', { user: req.user, dateFormat }); 
-});
-
-app.get('/delete/:id', (req, res) => {
-  Ninja.findByIdAndRemove({_id: req.params.id}).then((deleted) => {
-    res.redirect('../index.html');
-  }).catch((e) => {
-    console.log(e);
-  });
-});
-
-app.post('/edit/:id', (req, res) => {
-  var body = _.pick(req.body, ['name', 'rank']);
-  console.log(body);
-  Ninja.findByIdAndUpdate({_id: req.params.id}, body, {new: true}).then((editedNinja) => {
-    console.log(editedNinja);
-    res.redirect('../index.html');
-  }).catch((e) => {
-    console.log(e);
-  });
 });
 
 app.listen(process.env.port || 3000, () => {
