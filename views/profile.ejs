@@ -24,8 +24,8 @@
     <br />
     <br />
       <% user.routes.forEach((route, index) => {%>
-          <form id="delete-form" action="/routes/delete" method="POST">
-            <input type="hidden" name="id" value=''>
+          <form id="delete-form" action="/profile/delete" method="POST">
+            <input type="hidden" name="index" value=<%=index%>>
             <input type="submit" value='Delete'>
           </form>
         <a href="./../waypoints/<%=index%>"><h4 style="display: inline-block;" class="wayp-group" style="display: inline">Waypoint Group <%=index + 1%>:<br /></h4></a>

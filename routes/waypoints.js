@@ -15,9 +15,6 @@ const authCheck = (req, res, next) => {
       next();
   }
 };
-
-router.get('/', authCheck, (req, res) => {
-})
 router.get('/:id', authCheck, (req, res) => {
     if (req.user.routes[0] === undefined) {
     res.render('index')    
