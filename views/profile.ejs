@@ -10,26 +10,30 @@
 
 </head>
 <body>
-<div>
-  </div>
-  <h1 class="title">Waypoints =></h1>
+  <header>
+  <h1 class="title"><img id="login-logo" src="/images/logo.png"><span id="title">Waypoints<span></h1>
+  <nav>
+    <ul>
+    <a href="/profile"><li class="nav-li">Profile</li></a>
+    <a href="/create"><li class="nav-li">Create WP</li></a>
+    <a href="/auth/logout"><li class="nav-li">Logout</li></a>
+    </ul>
+  </nav>
+  </header> 
   <div id="homepage">
     <h3>User Information:</h3>
-    <div id="ninja">
       <h4>Username: <%= user.username %></h4>
-    </div>
     <h3>Saved Routes:</h3>
-    <div id="ninja"></div>
+    <br />
+    <br />
       <% user.routes.forEach((route, index) => {%>
       <a href="./../waypoints/<%=index%>"><h4 style="display: inline">Waypoint Group <%=index + 1%>:</h4></a>
       <% route.waypoints.forEach((waypoint, index) => { %>
       <p style="display: inline;"><%=waypoint.name%> | </p>
       <% }) %>
+      <br />
       <% }) %>
     </div>
   </div>
-  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-  <script src="https://unpkg.com/react@15/dist/react.js"></script>
-  <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
 </body>
 </html>

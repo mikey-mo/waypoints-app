@@ -10,9 +10,16 @@
 
 </head>
 <body>
-<div>
-  </div>
-  <h1 class="title">Waypoints:</h1>
+  <header>
+  <h1 class="title"><img id="login-logo" src="/images/logo.png"><span id="title">Waypoints<span></h1>
+  <nav>
+    <ul>
+    <a href="/profile"><li class="nav-li">Profile</li></a>
+    <a href="/create"><li class="nav-li">Create WP</li></a>
+    <a href="/auth/logout"><li class="nav-li">Logout</li></a>
+    </ul>
+  </nav>
+  </header> 
   <div id="homepage">
     <div id="map">
     </div>
@@ -74,6 +81,10 @@
       <% } %>
     </div>
   </div>
+  <footer>
+  <div class="footer">
+  </div>
+</footer>
   <script>
       function initMap() {
         var directionsService = new google.maps.DirectionsService;

@@ -26,16 +26,15 @@ app.use(passport.session());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/api', require('./routes/api'));
 app.use('/auth', require('./routes/auth'));
 app.use('/profile', require('./routes/profile'));
 app.use('/waypoints', require('./routes/waypoints'));
 
 const authCheck = (req, res, next) => {
   if(!req.user){
-      res.redirect('/auth/login');
+    res.redirect('/auth/login');
   } else {
-      next();
+    next();
   }
 };
 
@@ -44,8 +43,16 @@ app.set('view engine', 'ejs');
 
 app.use(express.static('public'));
 
-app.get('/', authCheck, (req, res) => {
-  res.render('index', { user: req.user, dateFormat }); 
+app.get('/create', authCheck, (req, res) => {
+  res.render('index', {user: req.user })
+});
+
+app.get('/', (req, res) => {
+  if(req.user) {
+    res.redirect('profile');
+  } else {
+  res.render('login', { user: req.user, dateFormat });
+  }
 });
 
 app.listen(process.env.port || 3000, () => {
