@@ -85,6 +85,9 @@ router.post('/add', authCheck, (req, res) => {
   });
 
 router.post('/current', (req, res) => {
+    if (req.body.location === "no") {
+        res.redirect('./../')
+    }
     console.log(req.body);
     var posId = Math.random() * 10000;
     var floorId = Math.round(posId);
@@ -95,7 +98,6 @@ router.post('/current', (req, res) => {
     User.findOne({ _id: req.user.id }, {}).then((user) => {
         user.routes.push(object);
         user.save();
-    
     }).then(() => {
         res.status(200).redirect(`./../waypoints/${req.body.length}`)
     }).catch((e) => {
