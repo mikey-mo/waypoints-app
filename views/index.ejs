@@ -6,7 +6,7 @@
   <title>Waypoints</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="/styles.css" />
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Pontano+Sans" rel="stylesheet">
   <script type="text/javascript" src="/main.js"></script>
 </head>
 <body>
@@ -22,27 +22,41 @@
     </nav>
   </header> 
   <div id="homepage">
-    <h3>Start by creating your first waypoint:</h3>
-    <h4>Or go back to a previous <a href="/profile"><button>WAYPOINT LIST</button></a></h4>
-    <div id="ninjas">
+    <div class="container">
+      <div class="box" id="box-1">
+      <h3>Customize your first waypoint</h3>
         <form action="/waypoints" method="POST">
-            Name: <h6><i>Ex: Home, Hotel, Etc.</i></h6><input type="text" name="name">
-            Location: <h6><i>Ex: 1090 Bedford Ave, Brooklyn NY, Grand Central Terminal, etc.</i></h6><input type="text" name="address">
+            Name: <h6><i>Ex: Home, Hotel, Etc.</i></h6><input type="text" name="name"><br /><br />
+            Location: <h6><i>Ex: 1090 Bedford Ave, Brooklyn NY, Grand Central Terminal, etc.</i></h6><input type="text" name="address"><br /><br/>
             <input type="hidden" name="length" value=<%=length%>>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Create Route">
         </form>
-        <h4><span id="out"></span></h4>
+      </div>
+      <div class="box" id="box-2">
         <% length = user.routes.length %>
+        <h3>Use your current location (if available)</h3>
+        <div id="current-map">
+          Unable to load map?
+        </div>
         <form action="/waypoints/current" method="POST">
           <input id="latForm" type="hidden" name="lat" value=''>
           <input id="lngForm" type="hidden" name="lng" value=''>
           <input type="hidden" name="name" value="Starting Location">
           <input type="hidden" name="length" value=<%=length%>>
           <input id="location" name="location" type="hidden" value=''>
-          <input type="submit" value="Submit">
+          <input type="submit" value="Create Route">
         </form>
-    </div>
+        </div>
+      </div>
+        <div id="login-button-div">
+          <h4>You can also go back to a previous route list in your profile: <a href="/profile"><button>Profile</button></a></h4>
+        </div>
   </div>
+  <footer>
+  <div class="footer">
+    <p>&copy; 2018, maikimo LLC</p>
+  </div>
+</footer>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpsmQEFJ1UAww2q0_sJd9qIV3vEzTneqs&callback=initMap"></script>
   <script>
   function geoFindMe() {
@@ -55,19 +69,28 @@
       return;
     }
 
+    function initMap(lati, longi) {
+      map = new google.maps.Map(document.getElementById('current-map'), {
+        center: {lat: lati, lng: longi},
+        zoom: 14
+      });
+      marker = new google.maps.Marker({position: {lat: lati, lng: longi}, map: map })
+    }
+
     function success(position) {
       var latitude  = position.coords.latitude;
       var longitude = position.coords.longitude;
         output.value = `${latitude} ${longitude}`;
         lat.value = `${latitude}`;
         lng.value = `${longitude}`;
+        initMap(latitude, longitude);
     }
      function error() {
       output.value = "no";
     }
+
     navigator.geolocation.getCurrentPosition(success, error);
   }
-
   geoFindMe();
   </script>
 </body>

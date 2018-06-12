@@ -6,8 +6,7 @@
   <title>Waypoints</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="/styles.css" />
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css?family=Pontano+Sans" rel="stylesheet">
 </head>
 <body>
   <header>
@@ -21,19 +20,28 @@
   </nav>
   </header> 
   <div id="homepage">
-    <h3>User Information:</h3>
-      <h4>Username: <%= user.username %></h4>
-    <h3>Saved Routes:</h3>
+    <h3>Saved routes for: <%= user.username %></h3>
     <br />
     <br />
       <% user.routes.forEach((route, index) => {%>
-      <a href="./../waypoints/<%=index%>"><h4 style="display: inline">Waypoint Group <%=index + 1%>:</h4></a>
+          <form id="delete-form" action="/routes/delete" method="POST">
+            <input type="hidden" name="id" value=''>
+            <input type="submit" value='Delete'>
+          </form>
+        <a href="./../waypoints/<%=index%>"><h4 style="display: inline-block;" class="wayp-group" style="display: inline">Waypoint Group <%=index + 1%>:<br /></h4></a>
+      <div class="wayp-names">
       <% route.waypoints.forEach((waypoint, index) => { %>
       <p style="display: inline;"><%=waypoint.name%> | </p>
       <% }) %>
+      </div>
       <br />
       <% }) %>
     </div>
   </div>
+  <footer>
+  <div class="footer">
+    <p>&copy; 2018, maikimo LLC</p>
+  </div>
+</footer>
 </body>
 </html>

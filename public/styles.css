@@ -1,9 +1,18 @@
 body{
-  font-family: Raleway;
+  font-family: 'Pontano Sans', sans-serif;
   color: #555;
-  background: #ff5252;
-  margin: 10px 30px;
-}
+  background: #ff5252;}
+.wayp-group {
+  margin-top: -2vw;
+  display: inline-block;
+  padding: 0.2vw;}
+.wayp-names {
+  margin: 0 0 -1vw 13vw;}
+.wayp-names>p{
+  position: relative;
+  bottom: 0.5vw;}
+.container{
+  display: flex;}
 a {
   color: #555;
   text-decoration: none;}
@@ -44,13 +53,12 @@ header{
   margin-bottom: 0vw;}
 #title{
   position: relative;
-  left: 2vw;
-  bottom: 1.2vw;}
+  left: 2vw;}
 #login-info{
   color: black;
   text-align: justify;}
 #login-logo {
-  border: 0.5vw solid #fff;
+  border: 0.44vw solid #fff;
   border-radius: 1.2vw;
   height: 7vw;
   margin-left: 1vw }
@@ -59,7 +67,7 @@ header{
   padding: 5px;
   border: 1px solid #999;
   text-align: center;
-  font-family: 'Roboto','sans-serif';
+  font-family: 'Pontano Sans', sans-serif;
   line-height: 30px;
   padding-left: 10px;}
 #homepage{
@@ -83,7 +91,15 @@ h6{
   padding-left: 10px;
   padding-top: 5px;}
 h4 {
-  margin-left: 20px;}
+  margin: 0;
+  margin-left: 1vw;}
+#current-map {
+  background-color: #ff5252;
+  border-radius: 0.2vw;
+  height: 15vw;
+  margin-bottom: 0.5vw;}
+.box {
+  width: 30vw;}
 h3 {
   display: inline;}
 #login-button{
@@ -97,17 +113,8 @@ h3 {
 }
 input[type="text"]{
   display: inline;
-  width: 300px;
-  margin: 20px 0;
-  padding: 10px;
-  border-radius: 4px;
-  border: 1px solid #ddd;
-}
-input[type="time"]{
-  display: inline;
-  width: 300px;
-  margin: 20px 0;
-  padding: 10px;
+  padding: 1vw;
+  width: 20vw;
   border-radius: 4px;
   border: 1px solid #ddd;
 }
@@ -119,19 +126,19 @@ label{
 }
 form{
   max-width: 350px;
-  margin: 30px auto;
 }
+#delete-form{
+  display: inline-block;}
 input[type="submit"]{
   background: #555;
-   color: #fff;
-   border: 0;
-   padding: 10px;
-   font-size: 18px;
-   width: 200px;
-   margin: 0 auto;
-   display: block;
-   cursor: pointer;
-   border-radius: 4px;
+  display: inline-block;
+  color: #fff;
+  border: 0;
+  padding: 0.4vw;
+  font-size: 1.4vw;
+  width: 10vw;
+  cursor: pointer;
+  border-radius: 0.3vw;
 }
 ul{
   margin: 0;
@@ -176,6 +183,7 @@ span.false{
   background: #ff5252;
 }
 button{
+  margin-left: 1vw;
   background: #555;
   height: 28px;
   border: 0;

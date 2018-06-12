@@ -46,6 +46,8 @@ router.post('/movedown/waypoint', authCheck, (req, res) => {
         User.findByIdAndUpdate({_id: req.user.id}, { $set: { routes: array }}).then(() => {
             res.redirect([`./../${req.body.id}`]);
         })
+    }).catch((e) => {
+        console.log('There was an error: ', e);
     })
 });
 
@@ -62,7 +64,9 @@ router.post('/moveup/waypoint', authCheck, (req, res) => {
         User.findByIdAndUpdate({_id: req.user.id}, { $set: { routes: array }}).then(() => {
             res.redirect([`./../${req.body.id}`]);
         })
-    })
+    }).catch((e) => {
+        console.log('There was an error: ', e)
+    });
 });
 
 router.post('/add', authCheck, (req, res) => {
