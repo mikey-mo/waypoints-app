@@ -27,16 +27,17 @@
       <% if (user.routes[id].waypoints.length < 2) { %>
       <h4>Add your next stop</h4>
         <form action="/waypoints/add" method="POST">
-            Name: <h6><i>Ex: Home, Hotel, Etc.</i></h6><input type="text" name="name">
+            Name: <h6><i>Ex: Home, Hotel, Etc.</i></h6><input type="text" name="name"><br />
             Location: <h6><i>Ex: Ex: 1090 Bedford Ave, Brooklyn NY, Grand Central Terminal, etc.</i></h6><input type="text" name="address"><br />
                   <input type="hidden" name="id" value=<%=id%>>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Submit" style="margin-top: 1vw;">
         </form>
       <% } else  { %>
       <% wypts = [] %>
     <div class="container">
-      <div class="box">
+      <div id="box-left" class="box">
       <h4>Route Waypoints:</h4>
+      <br />
           <% user.routes[id].waypoints.forEach((waypoint, index) => { %>
           <span id="waypoint-alpha" class="waypoint-info"><%=(index+10).toString(36)%></span>
           <span class="waypoint-info"><%=waypoint.name%></span>
@@ -46,7 +47,7 @@
                   <input type="hidden" name="id" value=<%=id%>>
                   <input type="hidden" name="posId" value=<%=waypoint.pos_id%>>
                   <input type="hidden" name="index" value=<%=index%>>
-                  <input id="crud-button" style="font-family: 'Pontano Sans', sans-serif;" type="submit" value="ʌ">
+                  <input id="crud-button" type="submit" value="up">
               </form>
               <% } %>
               <% last = user.routes[id].waypoints.length %>
@@ -55,13 +56,13 @@
                     <input type="hidden" name="id" value=<%=id%>>
                     <input type="hidden" name="index" value=<%=index%>>
                     <input type="hidden" name="posId" value=<%=waypoint.pos_id%>>
-                    <input id="crud-button" type="submit" value="v">
+                    <input id="crud-button" type="submit" value="dwn">
                 </form>
               <% } %>
                 <form class="move-forms" action="/waypoints/delete/waypoint" method="POST">
                     <input type="hidden" name="id" value=<%=id%>>
                     <input type="hidden" name="posId" value=<%=waypoint.pos_id%>>
-                    <input id="crud-button" type="submit" value="x">
+                    <input id="crud-button" type="submit" value="del">
                   </form>
             </div>
               <br />

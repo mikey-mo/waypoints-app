@@ -14,11 +14,11 @@ body{
 .container{
   display: flex;}
 #crud-button{
-  padding: 0;
-  padding-bottom: 0.1vw;
+  font-size: 1vw;
+  padding: 0.5vw;
   margin-top: 0.2vw;
-  width: 2vw;}
-a {
+  width: 4vw;}
+a{
   color: #555;
   text-decoration: none;}
 #login-button-div{
@@ -113,6 +113,8 @@ h4 {
   margin-bottom: 0.5vw;}
 .box {
   width: 30vw;}
+#box-left > div {
+  margin-bottom: -2vw;}
 h3 {
   display: inline;}
 #login-button{
@@ -124,10 +126,12 @@ h3 {
   border-radius: 4px;
   box-shadow: 1px 2px 3px rgba(0,0,0,0.2);}
 .form-crud{
-  display: inline;
+  padding-right: 4vw;
+  position: relative;
+  bottom: 2.2vw;
   text-align: right;}
 .move-forms{
-  margin: 0.2vw 1vw;
+  margin: 0.2vw 0.1vw 0.2vw 0.1vw;
   display: inline-block;}
 input[type="text"]{
   display: inline;
