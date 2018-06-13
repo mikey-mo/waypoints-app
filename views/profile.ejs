@@ -20,8 +20,8 @@
     </ul>
   </nav>
   </header> 
-  <div id="homepage">
-    <h3>Saved routes for: <%= user.username %></h3>
+  <div style="text-align: left;" id="homepage">
+    <h3 id="saved-h3">Saved routes for: <%= user.username %></h3>
     <br />
     <br />
       <% user.routes.forEach((route, index) => {%>
@@ -29,12 +29,8 @@
             <input type="hidden" name="index" value=<%=index%>>
             <input id="delete-button-resize" type="submit" value='Delete'>
           </form>
-        <a href="./../waypoints/<%=index%>"><h4 style="display: inline-block;" class="wayp-group" style="display: inline">Waypoint Group <%=index + 1%>:<br /></h4></a>
-      <div class="wayp-names">
-      <% route.waypoints.forEach((waypoint, index) => { %>
-      <p style="display: inline;"><%=waypoint.name%> | </p>
-      <% }) %>
-      </div>
+        <a href="./../waypoints/<%=index%>"><input id="delete-button-resize" type="submit" value="View"></a>
+        <h4 style="display: inline-block;" class="wayp-group" style="display: inline;">Waypoint Group <%=index + 1%><br /></h4>
       <br />
       <% }) %>
     </div>
