@@ -18,7 +18,7 @@ const app = express();
 
 app.use(cookieSession({
   maxAge: 25 * 60 * 60 * 1000,
-  keys: [keys.session.cookieKey]
+  keys: [process.env.COOKIE_KEY]
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -55,6 +55,6 @@ app.get('/', (req, res) => {
   }
 });
 
-app.listen(process.env.port || 3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log('listening')
 });
