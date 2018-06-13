@@ -115,7 +115,7 @@
             destination: {lat: <%=user.routes[id].waypoints[user.routes[id].waypoints.length -1].location.lat%>, lng: <%=user.routes[id].waypoints[user.routes[id].waypoints.length -1].location.lng%>},
             waypoints: sW,
             optimizeWaypoints: true,
-            travelMode: 'BICYCLING'
+            travelMode: 'DRIVING'
           }, function(response, status) {
             if (status === 'OK') {
               directionsDisplay.setDirections(response);

@@ -2,6 +2,8 @@ body{
   font-family: 'Pontano Sans', sans-serif;
   color: #555;
   background: #ff5252;}
+#delete-button-resize {
+  margin-bottom: 0.5vw;}
 .wayp-group {
   margin-top: -2vw;
   display: inline-block;
