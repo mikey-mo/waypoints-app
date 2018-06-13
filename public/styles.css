@@ -385,3 +385,18 @@ button.false{display: none;}
     margin-right: 4vw;
   }
 }
+
+@media only screen and (min-device-width : 200px) and (max-device-width : 480px) {
+
+  #homepage {
+    width: 92vw;
+  }
+
+  #current-map {
+    width: 92vw;
+  }
+
+  footer {
+    width: 92vw;
+  }
+}
