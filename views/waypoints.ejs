@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="/styles.css" />
   <link href="https://fonts.googleapis.com/css?family=Pontano+Sans" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/images/favicon.ico">
 </head>
 <body>
   <header>
@@ -28,7 +29,7 @@
       <h4>Add your next stop</h4>
         <form action="/waypoints/add" method="POST">
             Name: <h6><i>Ex: Home, Hotel, Etc.</i></h6><input type="text" name="name"><br />
-            Location: <h6><i>Ex: Ex: 1090 Bedford Ave, Brooklyn NY, Grand Central Terminal, etc.</i></h6><input type="text" name="address"><br />
+            Location: <h6><i>Ex: 1090 Bedford Ave, Brooklyn NY, Grand Central Terminal, etc.</i></h6><input type="text" name="address"><br />
                   <input type="hidden" name="id" value=<%=id%>>
             <input type="submit" value="Submit" style="margin-top: 1vw;">
         </form>
@@ -74,7 +75,7 @@
           <h4>Add Location:</h4>
           <form action="/waypoints/add" method="POST">
               Name: <h6><i>Ex: Home, Hotel, Etc.</i></h6><input type="text" name="name"><br />
-              Location: <h6><i>Ex: Ex: 1090 Bedford Ave, Brooklyn NY, Grand Central Terminal, etc.</i></h6><input type="text" name="address"><br />
+              Location: <h6><i>Ex: 1090 Bedford Ave, Brooklyn NY, Grand Central Terminal, etc.</i></h6><input type="text" name="address"><br />
                     <input type="hidden" name="id" value=<%=id%>>
               <input type="submit" value="Submit" style="margin-top: 1vw;">
           </form>

@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="/styles.css" />
   <link href="https://fonts.googleapis.com/css?family=Pontano+Sans" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/images/favicon.ico">
 </head>
 <body>
   <header>
@@ -26,7 +27,7 @@
       <% user.routes.forEach((route, index) => {%>
           <form id="delete-form" action="/profile/delete" method="POST">
             <input type="hidden" name="index" value=<%=index%>>
-            <input type="submit" value='Delete'>
+            <input id="delete-button-resize" type="submit" value='Delete'>
           </form>
         <a href="./../waypoints/<%=index%>"><h4 style="display: inline-block;" class="wayp-group" style="display: inline">Waypoint Group <%=index + 1%>:<br /></h4></a>
       <div class="wayp-names">
