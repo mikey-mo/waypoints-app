@@ -11,7 +11,7 @@ const passport = require('passport');
 const keys = require('./config/keys');
 const dateFormat = require('dateformat');
 
-mongoose.connect('mongodb://localhost/waypoints' || process.env.MONGOLAB_URI)
+mongoose.connect(process.env.MONGOLAB_URI)
 mongoose.Promise = global.Promise;
 
 const app = express();
