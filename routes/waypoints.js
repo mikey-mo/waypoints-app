@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const axios = require('axios');
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId();
+const alert = require('alert-node');
 
 const authCheck = (req, res, next) => {
   if(!req.user){
@@ -15,6 +16,9 @@ const authCheck = (req, res, next) => {
       next();
   }
 };
+
+router.get('/', authCheck, (req, res) => {
+})
 router.get('/:id', authCheck, (req, res) => {
     if (req.user.routes[0] === undefined) {
     res.render('index')    
@@ -72,7 +76,9 @@ router.post('/add', authCheck, (req, res) => {
     var geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=AIzaSyBpsmQEFJ1UAww2q0_sJd9qIV3vEzTneqs`;
     axios.get(geocodeUrl).then((response) => {
         if (response.data.status === 'ZERO_RESULTS') {
-            throw new Error('Unable to find address.');
+            // throw new Error('Unable to find address.');
+            alert('There was an error');
+            res.redirect(backURL);
             }
         posId = Math.random() * 10000;
         floorId = Math.round(posId);

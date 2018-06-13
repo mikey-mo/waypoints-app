@@ -36,7 +36,7 @@
         <% length = user.routes.length %>
         <h3>Use your current location (if available)</h3>
         <div id="current-map">
-          Unable to load map?
+          Locating current position
         </div>
         <form action="/waypoints/current" method="POST">
           <input id="latForm" type="hidden" name="lat" value=''>
@@ -44,7 +44,7 @@
           <input type="hidden" name="name" value="Starting Location">
           <input type="hidden" name="length" value=<%=length%>>
           <input id="location" name="location" type="hidden" value=''>
-          <input type="submit" value="Create Route">
+          <input id="geolocation-button" type="submit" value="Create Route">
         </form>
         </div>
       </div>
@@ -87,6 +87,7 @@
     }
      function error() {
       output.value = "no";
+      document.getElementById('geolocation-button').disabled = true;
     }
 
     navigator.geolocation.getCurrentPosition(success, error);
