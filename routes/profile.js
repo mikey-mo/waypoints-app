@@ -18,7 +18,6 @@ router.post('/delete', authCheck, (req, res) => {
     User.findById({_id: req.user.id}, {}).then((user) => {
         array = user.routes;
         array.splice(req.body.index, 1)
-        console.log(array);
         return array;
     }).then((array) => {
         User.findByIdAndUpdate({_id: req.user.id}, { $set: { routes: array }}).then(() => {

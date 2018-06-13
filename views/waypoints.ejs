@@ -23,105 +23,107 @@
     <div id="map">
     </div>
     <br />
-    <div id="ninja">
-      <h4>Username: <%= user.username %></h4>
-    </div>
-    <div id="ninja">
+    <div>
       <% if (user.routes[id].waypoints.length < 2) { %>
       <h4>Add your next stop</h4>
         <form action="/waypoints/add" method="POST">
             Name: <h6><i>Ex: Home, Hotel, Etc.</i></h6><input type="text" name="name">
-            Location: <h6><i>Ex: Ex: 1090 Bedford Ave, Brooklyn NY, Grand Central Terminal, etc.</i></h6><input type="text" name="address">
-            Time: <input type="time" name="time" value="12:00:00"><br />
+            Location: <h6><i>Ex: Ex: 1090 Bedford Ave, Brooklyn NY, Grand Central Terminal, etc.</i></h6><input type="text" name="address"><br />
                   <input type="hidden" name="id" value=<%=id%>>
             <input type="submit" value="Submit">
         </form>
       <% } else  { %>
       <% wypts = [] %>
-      <h4>Waypoint Group:</h4>
+    <div class="container">
+      <div class="box">
+      <h4>Route Waypoints:</h4>
           <% user.routes[id].waypoints.forEach((waypoint, index) => { %>
-          <span id="waypoint-info"><%=(index+10).toString(36)%></span>
-          <span id="waypoint-info">Time: <%=waypoint.time%></span>
-          <span id="waypoint-info">Name: <%=waypoint.name%></span>
+          <span id="waypoint-alpha" class="waypoint-info"><%=(index+10).toString(36)%></span>
+          <span class="waypoint-info"><%=waypoint.name%></span>
+          <div class="form-crud">
           <% if (user.routes[id].waypoints.indexOf(waypoint) !== 0) { %>
-          <form action="/waypoints/moveup/waypoint" method="POST">
-              <input type="hidden" name="id" value=<%=id%>>
-              <input type="hidden" name="posId" value=<%=waypoint.pos_id%>>
-              <input type="hidden" name="index" value=<%=index%>>
-              <input type="submit" value="Move Up">
-          </form>
-          <% } %>
-          <% last = user.routes[id].waypoints.length %>
-          <% if (user.routes[id].waypoints.lastIndexOf(waypoint) !== last -1) {%>
-            <form action="/waypoints/movedown/waypoint" method="POST">
-                <input type="hidden" name="id" value=<%=id%>>
-                <input type="hidden" name="index" value=<%=index%>>
-                <input type="hidden" name="posId" value=<%=waypoint.pos_id%>>
-                <input type="submit" value="Move Down">
-            </form>
-          <% } %>
-            <form action="/waypoints/delete/waypoint" method="POST">
-                <input type="hidden" name="id" value=<%=id%>>
-                <input type="hidden" name="posId" value=<%=waypoint.pos_id%>>
-                <input type="submit" value="Delete">
-            </form>
-          <% wypts.push({location: waypoint.locationString, stopover: true}); %>
-          <% }) %>
-        <% slicedWypts = wypts.slice(1, -1) %>
-        <%= slicedWypts[0].location %>
-        <h4>Add Location:</h4>
-        <form action="/waypoints/add" method="POST">
-            Name: <h6><i>Ex: Home, Hotel, Etc.</i></h6><input type="text" name="name">
-            Location: <h6><i>Ex: Ex: 1090 Bedford Ave, Brooklyn NY, Grand Central Terminal, etc.</i></h6><input type="text" name="address">
-            Time: <input type="time" name="time" value="12:00:00"><br />
+              <form class="move-forms" action="/waypoints/moveup/waypoint" method="POST">
                   <input type="hidden" name="id" value=<%=id%>>
-            <input type="submit" value="Submit">
-        </form>
-      <% } %>
+                  <input type="hidden" name="posId" value=<%=waypoint.pos_id%>>
+                  <input type="hidden" name="index" value=<%=index%>>
+                  <input id="crud-button" style="font-family: 'Pontano Sans', sans-serif;" type="submit" value="ʌ">
+              </form>
+              <% } %>
+              <% last = user.routes[id].waypoints.length %>
+              <% if (user.routes[id].waypoints.lastIndexOf(waypoint) !== last -1) {%>
+                <form class="move-forms" action="/waypoints/movedown/waypoint" method="POST">
+                    <input type="hidden" name="id" value=<%=id%>>
+                    <input type="hidden" name="index" value=<%=index%>>
+                    <input type="hidden" name="posId" value=<%=waypoint.pos_id%>>
+                    <input id="crud-button" type="submit" value="v">
+                </form>
+              <% } %>
+                <form class="move-forms" action="/waypoints/delete/waypoint" method="POST">
+                    <input type="hidden" name="id" value=<%=id%>>
+                    <input type="hidden" name="posId" value=<%=waypoint.pos_id%>>
+                    <input id="crud-button" type="submit" value="x">
+                  </form>
+            </div>
+              <br />
+            <% wypts.push({location: waypoint.locationString, stopover: true}); %>
+            <% }) %>
+          <% slicedWypts = wypts.slice(1, -1) %>
+        </div>
+        <div class="box">
+          <h4>Add Location:</h4>
+          <form action="/waypoints/add" method="POST">
+              Name: <h6><i>Ex: Home, Hotel, Etc.</i></h6><input type="text" name="name"><br />
+              Location: <h6><i>Ex: Ex: 1090 Bedford Ave, Brooklyn NY, Grand Central Terminal, etc.</i></h6><input type="text" name="address"><br />
+                    <input type="hidden" name="id" value=<%=id%>>
+              <input type="submit" value="Submit" style="margin-top: 1vw;">
+          </form>
+        </div>
+        <% } %>
+      </div>
     </div>
-  </div>
-  <footer>
-    <div class="footer">
-      <p>&copy; 2018, maikimo LLC</p>
     </div>
-  </footer>
-  <script>
-      function initMap() {
-        var directionsService = new google.maps.DirectionsService;
-        var directionsDisplay = new google.maps.DirectionsRenderer;
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 20,
-          center: {lat: <%=user.routes[id].waypoints[0].location.lat%>, lng: <%=user.routes[id].waypoints[0].location.lng%>}
-        });
-        directionsDisplay.setMap(map);
+    <footer>
+      <div class="footer">
+        <p>&copy; 2018, maikimo LLC</p>
+      </div>
+    </footer>
+    <script>
+        function initMap() {
+          var directionsService = new google.maps.DirectionsService;
+          var directionsDisplay = new google.maps.DirectionsRenderer;
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 20,
+            center: {lat: <%=user.routes[id].waypoints[0].location.lat%>, lng: <%=user.routes[id].waypoints[0].location.lng%>}
+          });
+          directionsDisplay.setMap(map);
 
-        calculateAndDisplayRoute(directionsService, directionsDisplay);
-      }
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+        }
 
-      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-        id = <%=id%>
-        <% wypts = [] %>
-          <% user.routes[id].waypoints.forEach((waypoint, index) => { %>
-          <% wypts.push({location: waypoint.locationString, stopover: true}); %>
-          <% }) %>
-        <% slicedWypts = wypts.slice(1, -1) %>
-          sW = <%- JSON.stringify(slicedWypts) %>
-        directionsService.route({
-          origin: {lat: <%=user.routes[id].waypoints[0].location.lat%>, lng: <%=user.routes[id].waypoints[0].location.lng%>},
-          destination: {lat: <%=user.routes[id].waypoints[user.routes[id].waypoints.length -1].location.lat%>, lng: <%=user.routes[id].waypoints[user.routes[id].waypoints.length -1].location.lng%>},
-          waypoints: sW,
-          optimizeWaypoints: true,
-          travelMode: 'BICYCLING'
-        }, function(response, status) {
-          if (status === 'OK') {
-            directionsDisplay.setDirections(response);
-          } else {
-            window.alert('Directions request failed due to ' + status);
-          }
-        });
-      }
+        function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+          id = <%=id%>
+          <% wypts = [] %>
+            <% user.routes[id].waypoints.forEach((waypoint, index) => { %>
+            <% wypts.push({location: waypoint.locationString, stopover: true}); %>
+            <% }) %>
+          <% slicedWypts = wypts.slice(1, -1) %>
+              sW = <%- JSON.stringify(slicedWypts) %>
+          directionsService.route({
+            origin: {lat: <%=user.routes[id].waypoints[0].location.lat%>, lng: <%=user.routes[id].waypoints[0].location.lng%>},
+            destination: {lat: <%=user.routes[id].waypoints[user.routes[id].waypoints.length -1].location.lat%>, lng: <%=user.routes[id].waypoints[user.routes[id].waypoints.length -1].location.lng%>},
+            waypoints: sW,
+            optimizeWaypoints: true,
+            travelMode: 'DRIVING'
+          }, function(response, status) {
+            if (status === 'OK') {
+              directionsDisplay.setDirections(response);
+            } else {
+              window.alert('Directions request failed due to ' + status);
+            }
+          });
+        }
 
-    </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpsmQEFJ1UAww2q0_sJd9qIV3vEzTneqs&callback=initMap"></script>
-</body>
-</html>
+      </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpsmQEFJ1UAww2q0_sJd9qIV3vEzTneqs&callback=initMap"></script>
+  </body>
+  </html>

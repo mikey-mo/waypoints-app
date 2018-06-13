@@ -13,6 +13,11 @@ body{
   bottom: 0.5vw;}
 .container{
   display: flex;}
+#crud-button{
+  padding: 0;
+  padding-bottom: 0.1vw;
+  margin-top: 0.2vw;
+  width: 2vw;}
 a {
   color: #555;
   text-decoration: none;}
@@ -59,6 +64,12 @@ header{
   text-align: justify;}
 #login-info>p{
   font-size: 1.7vw;}
+.waypoint-info{
+  font-size: 1.25vw;}
+#waypoint-alpha{
+  margin-right: 0vw;
+  text-transform: uppercase;
+  font-weight: bold;}
 #login-logo {
   border: 0.44vw solid #fff;
   border-radius: 1.2vw;
@@ -80,11 +91,11 @@ header{
   border-radius: 0.3vw;
   box-shadow: 1px 2px 3px rgba(0,0,0,0.2);}
 footer {
-  padding: 1vw 2vw;
+  padding: 0.5vw 2vw 1vw 2vw;
   text-align: right;
   max-width: 60vw;
-  margin: 3vw auto;
-  height: 4vw;
+  margin: 2vw auto;
+  height: 3vw;
   background-color: white;
   border-radius: 0.3vw;
   box-shadow: 1px 2px 3px rgba(0,0,0,0.2);}
@@ -111,24 +122,23 @@ h3 {
   padding: 10px;
   background: #ff5252;
   border-radius: 4px;
-  box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
-}
+  box-shadow: 1px 2px 3px rgba(0,0,0,0.2);}
+.form-crud{
+  display: inline;
+  text-align: right;}
+.move-forms{
+  margin: 0.2vw 1vw;
+  display: inline-block;}
 input[type="text"]{
   display: inline;
   padding: 1vw;
   width: 20vw;
-  border-radius: 4px;
-  border: 1px solid #ddd;
-}
+  border-radius: 0.5vw;
+  border: 1px solid #ddd;}
 label{
-  font-weight: bold;
-}
+  font-weight: bold;}
 #homepage h1{
-  text-align: center;
-}
-form{
-  max-width: 350px;
-}
+  text-align: center;}
 #delete-form{
   display: inline-block;}
 input[type="submit"]{
