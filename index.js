@@ -10,9 +10,8 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const keys = require('./config/keys');
 const dateFormat = require('dateformat');
-const mongoConnect = encodeURIComponent(process.env.MONGOLAB_URI);
 
-mongoose.connect(mongoConnect)
+mongoose.connect(process.env.MONGOLAB_URI)
 mongoose.Promise = global.Promise;
 
 const app = express();
