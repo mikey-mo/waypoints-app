@@ -25,6 +25,8 @@
     "ejs": "^2.6.1",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
+    "express-sslify": "^1.2.0",
+    "force-ssl-heroku": "^1.0.2",
     "geolocation-marker": "^2.0.5",
     "googlemaps": "^1.12.0",
     "lodash": "^4.17.10",

@@ -10,12 +10,14 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const keys = require('./config/keys');
 const dateFormat = require('dateformat');
+var forceSsl = require('force-ssl-heroku');
 
 mongoose.connect(process.env.MONGOLAB_URI)
 mongoose.Promise = global.Promise;
 
 const app = express();
 
+app.use(forceSsl)
 app.use(cookieSession({
   maxAge: 25 * 60 * 60 * 1000,
   keys: [process.env.COOKIE_KEY]

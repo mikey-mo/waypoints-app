@@ -18,8 +18,7 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-  console.log('Im hung up');
-  res.redirect('./../../profile');
+  res.redirect('./../../create');
 });
 
 module.exports = router;
