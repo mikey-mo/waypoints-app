@@ -45,7 +45,7 @@ a {
 }
 
 #profile-button-div {
-  margin-top: 4vw;
+  margin-top: 10vw;
   margin-left: -1vw;
 }
 
@@ -339,6 +339,7 @@ button.false{display: none;}
 
   #box-1 {
     width: 80vw;
+    margin-bottom: 10vw;
   }
 
   #box-2 {
