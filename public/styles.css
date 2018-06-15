@@ -202,9 +202,14 @@ input[type="text"]{
 label{
   font-weight: bold;}
 #homepage h1{
-  text-align: center;}
-#delete-form{
-  display: inline-block;}
+  text-align: center;
+}
+
+#delete-form {
+  margin-left: 4vw;
+  margin-bottom: 0.2vw;
+  display: inline-block;
+}
 input[type="submit"]{
   background: #555;
   display: inline-block;
