@@ -1,82 +1,129 @@
-body{
+body {
   font-family: 'Pontano Sans', sans-serif;
   color: #555;
-  background: #ff5252;}
+  background: #ff5252;
+}
+
 #delete-button-resize {
-  margin-bottom: 0.5vw;}
+  margin-bottom: 0.5vw;
+}
+
 .wayp-group {
   margin-top: -2vw;
   display: inline-block;
-  padding: 0.2vw;}
+  padding: 0.2vw;
+}
+
 .wayp-names {
-  margin: 0 0 -1vw 13vw;}
-.wayp-names>p{
+  margin: 0 0 -1vw 13vw;
+}
+
+.wayp-names>p {
   position: relative;
-  bottom: 0.5vw;}
-.container{
-  display: flex;}
-#crud-button{
+  bottom: 0.5vw;
+}
+
+.container {
+  display: flex;
+}
+
+#crud-button {
   font-size: 1vw;
   padding: 0.5vw;
   margin-top: 0.2vw;
-  width: 4vw;}
-a{
+  width: 4vw;
+}
+
+a {
   color: #555;
-  text-decoration: none;}
-#login-button-div{
+  text-decoration: none;
+}
+
+#login-button-div {
   margin-top: 2vw;
   margin-right: 2vw;
-  text-align: right;}
+  text-align: right;
+}
+
 #log-content{
-  display: flex;}
+  display: flex;
+}
+
 #log-list-ul{
-  margin-top: 1vw;}
+  margin-top: 1vw;
+}
+
 .log-list{
   list-style-type: circle;
   background-color: #fff;
   margin-left: 2vw;
-  font-size: 1.2vw;}
+  font-size: 1.2vw;
+}
+
 #login-shot {
   display: inline-block;
   border: 0.15vw solid #ff5252;
   border-radius: 0.5vw;
-  height: 20vw;}
-header{
+  height: 20vw;
+}
+
+header {
+  height: 8vw;
   text-align: center;
-  margin-top: -2vw;
-  margin-bottom: -1vw;}
+  margin-top: -3vw;
+  margin-bottom: 2.5vw;
+}
+
 #map {
-  height: 30vw;
+  height: 25vw;
   padding: 0;
   margin: 0;
   grid-column: 2;
   border: 2px #ff5252 solid;
-  text-align: center;}
-.title{
+  border-radius: 0.2vw;
+  text-align: center;
+}
+
+.title {
   text-align: center;
   display: inline-block;
   color: #fff;
   font-size: 5vw;
-  margin-bottom: 0vw;}
+  margin-bottom: 0vw;
+}
+
 #title{
   position: relative;
-  left: 2vw;}
+  left: 2vw;
+  bottom: 0.1vw;
+}
+
 #login-info{
   color: black;
-  text-align: justify;}
+  text-align: justify;
+}
+
 #login-info>p{
-  font-size: 1.7vw;}
+  font-size: 1.7vw;
+}
+
 .waypoint-info{
-  font-size: 1.25vw;}
+  font-size: 1.25vw;
+}
+
 #waypoint-alpha{
   margin-right: 0vw;
   text-transform: uppercase;
-  font-weight: bold;}
+  font-weight: bold;
+}
+
 #login-logo {
   border: 0.44vw solid #fff;
-  border-radius: 1.2vw;
-  height: 7vw;
-  margin-left: 1vw }
+  border-radius: 0.5vw;
+  height: 5vw;
+  margin-left: 1vw;
+}
+
 #floating-panel {
   background-color: #fff;
   padding: 5px;
@@ -84,19 +131,26 @@ header{
   text-align: center;
   font-family: 'Pontano Sans', sans-serif;
   line-height: 30px;
-  padding-left: 10px;}
-#homepage{
-  width: 60vw;
-  margin: 1vw auto;
+  padding-left: 10px;
+}
+
+#homepage {
+  max-width: 80vw;
+  height: 31vw;
+  max-height: 70vw;
+  margin: 1vw auto 0 auto;
   padding: 1.5vw 2vw;
   background: #fdfdfd;
   border-radius: 0.3vw;
-  box-shadow: 1px 2px 3px rgba(0,0,0,0.2);}
+  box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+  overflow: scroll;
+}
+
 footer {
   padding: 0.5vw 2vw 1vw 2vw;
   text-align: right;
-  width: 60vw;
-  margin: 2vw auto;
+  width: 80vw;
+  margin: 1.5vw auto;
   height: 3vw;
   background-color: white;
   border-radius: 0.3vw;
@@ -112,9 +166,13 @@ h4 {
   background-color: #ff5252;
   border-radius: 0.2vw;
   height: 15vw;
-  margin-bottom: 0.5vw;}
+  margin-bottom: 0.5vw;
+}
+
 .box {
-  width: 30vw;}
+  width: 40vw;
+}
+
 #box-left > div {
   margin-bottom: -2vw;}
 h3 {
@@ -138,7 +196,7 @@ h3 {
 input[type="text"]{
   display: inline;
   padding: 1vw;
-  width: 20vw;
+  width: 30vw;
   border-radius: 0.5vw;
   border: 1px solid #ddd;}
 label{
