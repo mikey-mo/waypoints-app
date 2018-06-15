@@ -81,7 +81,7 @@ header {
 }
 
 #map {
-  height: 25vw;
+  height: 22vw;
   padding: 0;
   margin: 0;
   grid-column: 2;
@@ -142,7 +142,7 @@ header {
 
 #homepage {
   width: 80vw;
-  height: 30vw;
+  height: 37vw;
   margin: 1vw auto 0 auto;
   padding: 1.5vw 2vw;
   background: #fdfdfd;
@@ -151,15 +151,6 @@ header {
   overflow: scroll;
 }
 
-footer {
-  padding: 0.5vw 2vw 1vw 2vw;
-  text-align: right;
-  width: 80vw;
-  margin: 1.5vw auto 0 auto;
-  height: 3vw;
-  background-color: white;
-  border-radius: 0.3vw;
-  box-shadow: 1px 2px 3px rgba(0,0,0,0.2);}
 h6{
   margin: 0;
   padding-left: 10px;
