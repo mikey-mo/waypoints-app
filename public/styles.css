@@ -40,8 +40,13 @@ a {
 }
 
 #login-button-div {
-  margin-top: 2vw;
+  margin-right: 10vw;
   text-align: right;
+}
+
+#profile-button-div {
+  margin-top: 4vw;
+  margin-left: -1vw;
 }
 
 #log-content{
@@ -55,7 +60,7 @@ a {
 .log-list{
   list-style-type: circle;
   background-color: #fff;
-  margin-left: 2vw;
+  margin-left: 6vw;
   font-size: 1.2vw;
 }
 
@@ -64,6 +69,8 @@ a {
   border: 0.15vw solid #ff5252;
   border-radius: 0.5vw;
   height: 20vw;
+  width: 38vw;
+  float: left;
 }
 
 header {
