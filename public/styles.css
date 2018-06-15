@@ -103,7 +103,7 @@ header {
 }
 
 #login-info>p{
-  font-size: 1.7vw;
+  font-size: 1vw;
 }
 
 .waypoint-info{
@@ -134,9 +134,9 @@ header {
 }
 
 #homepage {
-  max-width: 80vw;
-  height: 31vw;
-  max-height: 70vw;
+  width: 80vw;
+  height: 30vw;
+  height: 70vw;
   margin: 1vw auto 0 auto;
   padding: 1.5vw 2vw;
   background: #fdfdfd;
@@ -149,7 +149,7 @@ footer {
   padding: 0.5vw 2vw 1vw 2vw;
   text-align: right;
   width: 80vw;
-  margin: 1.5vw auto;
+  margin: 1.5vw auto 0 auto;
   height: 3vw;
   background-color: white;
   border-radius: 0.3vw;
@@ -454,7 +454,27 @@ button.false{display: none;}
 @media only screen and (min-device-width : 200px) and (max-device-width : 480px) {
 
   #homepage {
-    width: 92vw;
+    margin: 0;
+    margin-top: 12vw;
+    width: 100vw;
+    height: 130vw;
+    padding: 0;
+  }
+
+  #map {
+    margin: 0;
+    margin-top: 2vw;
+    width: 98vw;
+    height: 60vw;
+  }
+
+  footer>p {
+    font-size: 0.5vw;
+  }
+
+  body {
+    padding: 0;
+    margin: 0;
   }
 
   #current-map {
@@ -462,6 +482,6 @@ button.false{display: none;}
   }
 
   footer {
-    width: 92vw;
+    width: 96vw;
   }
 }
