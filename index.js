@@ -10,7 +10,7 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const keys = require('./config/keys');
 const dateFormat = require('dateformat');
-var forceSsl = require('force-ssl-heroku');
+const forceSsl = require('force-ssl-heroku');
 
 mongoose.connect(process.env.MONGOLAB_URI)
 mongoose.Promise = global.Promise;
