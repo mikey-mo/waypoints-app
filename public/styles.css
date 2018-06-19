@@ -486,4 +486,14 @@ button.false{display: none;}
 }
 
 @media only screen and (min-device-width : 200px) and (max-device-width : 480px) {
+  #homepage {
+    width: 92vw;
+    height: 125vw;
+  }
+
+  h1 {
+    font-size: 6vw;
+  }
+
+
 }
