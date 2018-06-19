@@ -321,9 +321,10 @@ button.false{display: none;}
   }
 
   #log-content>img {
-    width: 83.5vw;
-    height: 70vw;
-    margin-left: 4.3vw;
+    display: block;
+    width: 60vw;
+    height: 35vw;
+    margin-left: 17vw;
     margin-bottom: 6vw;
     border: 0.5vw solid #ff5252;
   }
