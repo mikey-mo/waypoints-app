@@ -339,6 +339,7 @@ button.false{display: none;}
     padding: 1vw;
     margin-bottom: -2vw;
     border-radius: 0.5vw;
+    box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
   }
 
   footer {
@@ -491,10 +492,10 @@ button.false{display: none;}
     height: 125vw;
   }
   
-  .title {
+  . {
     width: 100vw;
   }
-  
+
   h1 {
     font-size: 6vw;
   }
