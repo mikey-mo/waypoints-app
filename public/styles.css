@@ -506,4 +506,12 @@ button.false{display: none;}
     height: 30vw;
     margin-bottom: 4vw;
   }
+
+  #login-logo {
+    margin-right: 20vw;
+  }
+
+  #current-map {
+    width: 92vw;
+  }
 }
