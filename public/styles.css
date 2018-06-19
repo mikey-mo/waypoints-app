@@ -491,13 +491,14 @@ button.false{display: none;}
     width: 92vw;
     height: 125vw;
   }
-  
-  . {
-    width: 100vw;
-  }
 
   h1 {
     font-size: 6vw;
+  }
+
+  #profile-button-div>h4 {
+    margin-left: 8vw;
+    font-size: 2.5vw;
   }
 
   #log-content>img {
