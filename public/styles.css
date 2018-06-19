@@ -324,7 +324,7 @@ button.false{display: none;}
     width: 83.5vw;
     height: 70vw;
     margin-left: 4.3vw;
-    margin-bottom: 8vw;
+    margin-bottom: 6vw;
     border: 0.5vw solid #ff5252;
   }
 
@@ -422,6 +422,10 @@ button.false{display: none;}
     font-size: 3vw;
   }
 
+  .login-logo-img {
+    margin-right: 100vw;
+  }
+
   .waypoint-info {
     font-size: 4vw;
   }
@@ -455,9 +459,9 @@ button.false{display: none;}
     margin-right: 5vw;
   }
 
-  /* #delete-form {
-    margin-left: 10vw;
-  } */
+  #login-header {
+    display: none;
+  }
 
   #saved-h3 {
     margin-left: 18vw;
