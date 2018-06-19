@@ -277,7 +277,7 @@ button.false{display: none;}
 @media only screen and (min-device-width : 375px) and (max-device-width : 1024px) {
   #homepage {
     width: 94vw;
-    height: 110vw;
+    height: 120vw;
     text-align: center;
     margin-top: 10vw;
   }
