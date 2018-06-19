@@ -274,10 +274,10 @@ button{
 }
 button.false{display: none;}
 
-@media only screen and (min-device-width : 375px) and (max-device-width : 1024px) {
+@media only screen and (min-device-width : 480px) and (max-device-width : 1024px) {
   #homepage {
     width: 94vw;
-    height: 120vw;
+    height: 124vw;
     text-align: center;
     margin-top: 10vw;
   }
@@ -390,7 +390,9 @@ button.false{display: none;}
   }
 
   #profile-button {
-    display: none;
+    width: 20vw;
+    height: 8vw;
+    font-size: 3vw;
   }
 
   #map {
