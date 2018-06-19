@@ -316,6 +316,10 @@ button.false{display: none;}
     display: block;
   }
 
+  #login-title {
+    display: inline;
+  }
+
   #log-content>img {
     width: 83.5vw;
     height: 70vw;
