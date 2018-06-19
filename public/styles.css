@@ -142,7 +142,7 @@ header {
 
 #homepage {
   width: 80vw;
-  height: 37vw;
+  height: 38vw;
   margin: 1vw auto 0 auto;
   padding: 1.5vw 2vw;
   background: #fdfdfd;
@@ -277,7 +277,21 @@ button.false{display: none;}
 @media only screen and (min-device-width : 375px) and (max-device-width : 1024px) {
   #homepage {
     width: 94vw;
+    height: 80vw;
     text-align: center;
+    margin-top: 10vw;
+  }
+
+  h3 {
+    font-size: 4vw;
+  }
+
+  h6 {
+    font-size: 2vw;
+  }
+
+  form {
+    font-size: 3vw;
   }
 
   #title {
@@ -301,10 +315,11 @@ button.false{display: none;}
   }
 
   #log-content>img {
-    width: 70vw;
+    width: 83.5vw;
     height: 50vw;
     margin-left: 4.3vw;
-    border: 1vw solid #ff5252;
+    margin-bottom: 2vw;
+    border: 0.5vw solid #ff5252;
   }
 
   #log-list-ul {
