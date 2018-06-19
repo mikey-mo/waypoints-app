@@ -295,15 +295,17 @@ button.false{display: none;}
   }
 
   #title {
-    left: 8vw;
-    font-size: 10vw;
+    display: none;
   }
 
   #login-logo {
-    height: 10vw;
+    height: 12.5vw;
     position: relative;
-    left: 6vw;
+    left: 11vw;
+    margin-right: 55vw;
+    margin-left: -10vw;
   }
+
 
   #login-info>p {
     font-size: 3vw;
@@ -452,7 +454,7 @@ button.false{display: none;}
   } */
 
   #saved-h3 {
-    margin-left: 30vw;
+    margin-left: 18vw;
   }
 
   .wayp-group>h4 {
