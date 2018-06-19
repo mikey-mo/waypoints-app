@@ -274,7 +274,7 @@ button{
 }
 button.false{display: none;}
 
-@media only screen and (min-device-width : 480px) and (max-device-width : 1024px) {
+@media only screen and (min-device-width : 200px) and (max-device-width : 1024px) {
   #homepage {
     width: 94vw;
     height: 124vw;
