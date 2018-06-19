@@ -332,6 +332,14 @@ button.false{display: none;}
     display: none;
   }
 
+  #login-logo-img {
+    height: 20vw;
+    background-color: #ff5252;
+    padding: 1vw;
+    margin-bottom: -2vw;
+    border-radius: 0.5vw;
+  }
+
   footer {
     height: 10vw;
     width: 94vw;
