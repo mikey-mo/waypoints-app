@@ -490,10 +490,19 @@ button.false{display: none;}
     width: 92vw;
     height: 125vw;
   }
-
+  
+  .title {
+    width: 100vw;
+  }
+  
   h1 {
     font-size: 6vw;
   }
 
-
+  #log-content>img {
+    width: 50vw;
+    margin-left: 21vw;
+    height: 30vw;
+    margin-bottom: 4vw;
+  }
 }
