@@ -8,6 +8,14 @@ body {
   margin-bottom: 0.5vw;
 }
 
+#login-logo-img {
+  display: none;
+}
+
+#wayp-h1 {
+  display: none;
+}
+
 .wayp-group {
   margin-top: -2vw;
   display: inline-block;
@@ -280,6 +288,14 @@ button.false{display: none;}
     height: 124vw;
     text-align: center;
     margin-top: 10vw;
+  }
+
+  #login-logo-img {
+    display: inline-block;
+  }
+  
+  #wayp-h1 {
+    display: block;
   }
 
   h3 {
